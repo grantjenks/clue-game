@@ -56,7 +56,7 @@ def deploy():
 
     with cd(op.join(basedir, 'repo', 'www')):
         with prefix('source %s/env27/bin/activate' % basedir):
-            run('python manage.py migrate')
-            run('python manage.py collectstatic --noinput')
+            run('python manage.py migrate --settings=www.production')
+            run('python manage.py collectstatic --noinput --settings=www.production')
 
     sudo('supervisorctl signal SIGHUP clue-game:*')
