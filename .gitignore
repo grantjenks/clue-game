@@ -1,0 +1,8 @@
+# Python byte-code
+*.py[co]
+
+# Anything under a virutalenv directory
+env27/
+
+# Anything under a bin directory
+bin/

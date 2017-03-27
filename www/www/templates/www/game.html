@@ -1,0 +1,87 @@
+{% extends 'www/base.html' %}
+{% load bootstrap3 %}
+
+{% block title %}Game | Clue{% endblock %}
+
+{% block content %}
+
+<div class="jumbotron">
+  <h1>Game</h1>
+</div>
+
+<div class="row marketing">
+  <div class="col-lg-12">
+    <h4>Suspects</h4>
+    {% for suspect in game.suspects %}
+      <form action="{{ game.get_absolute_url }}" method="post" class="form-inline">
+        {% csrf_token %}
+        <input type='hidden' name='hashid' value='{{ suspect.hashid }}' />
+        <div class="form-group" style="width: 168px">{{ suspect.name }}</div>
+        {% buttons layout='horizontal' %}
+          <button name="delete-suspect" type="submit" class="btn btn-primary">
+            {% bootstrap_icon "remove" %} Delete
+          </button>
+        {% endbuttons %}
+      </form>
+      <br>
+    {% endfor %}
+    <form action="{{ game.get_absolute_url }}" method="post" class="form-inline">
+      {% csrf_token %}
+      {% bootstrap_form name_form layout='inline' %}
+      {% buttons layout='horizontal' %}
+        <button name="add-suspect" type="submit" class="btn btn-primary">
+          {% bootstrap_icon "plus" %} Add
+        </button>
+      {% endbuttons %}
+    </form>
+    <br>
+    <h4>Locations</h4>
+    {% for location in game.locations %}
+      <form action="{{ game.get_absolute_url }}" method="post" class="form-inline">
+        {% csrf_token %}
+        <input type='hidden' name='hashid' value='{{ location.hashid }}' />
+        <div class="form-group" style="width: 168px">{{ location.name }}</div>
+        {% buttons layout='horizontal' %}
+          <button name="delete-location" type="submit" class="btn btn-primary">
+            {% bootstrap_icon "remove" %} Delete
+          </button>
+        {% endbuttons %}
+      </form>
+      <br>
+    {% endfor %}
+    <form action="{{ game.get_absolute_url }}" method="post" class="form-inline">
+      {% csrf_token %}
+      {% bootstrap_form name_form layout='inline' %}
+      {% buttons layout='horizontal' %}
+        <button name="add-location" type="submit" class="btn btn-primary">
+          {% bootstrap_icon "plus" %} Add
+        </button>
+      {% endbuttons %}
+    </form>
+    <br>
+    <h4>Weapons</h4>
+    {% for weapon in game.weapons %}
+      <form action="{{ game.get_absolute_url }}" method="post" class="form-inline">
+        {% csrf_token %}
+        <input type='hidden' name='hashid' value='{{ weapon.hashid }}' />
+        <div class="form-group" style="width: 168px">{{ weapon.name }}</div>
+        {% buttons layout='horizontal' %}
+          <button name="delete-weapon" type="submit" class="btn btn-primary">
+            {% bootstrap_icon "remove" %} Delete
+          </button>
+        {% endbuttons %}
+      </form>
+      <br>
+    {% endfor %}
+    <form action="{{ game.get_absolute_url }}" method="post" class="form-inline">
+      {% csrf_token %}
+      {% bootstrap_form name_form layout='inline' %}
+      {% buttons layout='horizontal' %}
+        <button name="add-weapon" type="submit" class="btn btn-primary">
+          {% bootstrap_icon "plus" %} Add
+        </button>
+      {% endbuttons %}
+    </form>
+  </div>
+</div>
+{% endblock %}

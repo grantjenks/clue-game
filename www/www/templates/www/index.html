@@ -1,0 +1,46 @@
+{% extends 'www/base.html' %}
+{% load bootstrap3 %}
+
+{% block title %}Clue{% endblock %}
+
+{% block content %}
+
+<div class="jumbotron">
+  <h1>Clue</h1>
+  <p class="lead">The murder mystery game.</p>
+  <form action="{% url 'index' %}" method="post" class="form">
+    {% csrf_token %}
+    {% buttons %}
+    <button type="submit" class="btn btn-primary">
+      Get Started {% bootstrap_icon 'arrow-right' %}
+    </button>
+    {% endbuttons %}
+  </form>
+</div>
+
+<div class="row marketing">
+  <div class="col-lg-6">
+    <h4>Good for Groups</h4>
+    <p>Play with five to fifty kids.</p>
+
+    <h4>Fun</h4>
+    <p>Get dramatic and solve the puzzle.</p>
+
+    <h4>Indoors or Outdoors</h4>
+    <p>Play inside or outside. Customize the game for your group.</p>
+  </div>
+
+  <div class="col-lg-6">
+    <h4>Subheading</h4>
+    <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+
+    <h4>Subheading</h4>
+    <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+    <h4>Subheading</h4>
+    <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+  </div>
+</div>
+
+
+{% endblock %}
