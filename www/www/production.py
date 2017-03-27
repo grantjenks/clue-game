@@ -111,5 +111,21 @@ STATIC_URL = '/%sstatic/' % PREFIX
 STATIC_ROOT = os.path.join(BASE_DIR, 'bin', 'static')
 
 
+# Hashids for anonymity.
+
 from hashids import Hashids
 HASHIDS = Hashids(min_length=8, salt=SECRETS['HASHID_SALT'])
+
+
+# Email settings
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_PORT = 2525
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = SECRETS['SENDGRID_KEY']
+EMAIL_USE_TLS = True
+SERVER_EMAIL = 'no-reply@grantjenks.com'
+DEFAULT_FROM_EMAIL = 'no-reply@grantjenks.com'
+ADMINS = (
+    ('Grant Jenks', 'contact@grantjenks.com'),
+)
