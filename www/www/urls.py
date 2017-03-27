@@ -21,8 +21,10 @@ from . import views
 
 prefix = settings.PREFIX
 
+admin.site.site_header = 'Clue Game Backend'
+
 urlpatterns = [
-    url(prefix + r'^backend/', include(admin.site.urls)),
-    url(prefix + r'$', views.index, name='index'),
-    url(prefix + r'(?P<hashid>.*)/$', views.game, name='game'),
+    url('^' + prefix + r'backend/', include(admin.site.urls)),
+    url('^' + prefix + r'$', views.index, name='index'),
+    url('^' + prefix + r'(?P<hashid>.*)/$', views.game, name='game'),
 ]
