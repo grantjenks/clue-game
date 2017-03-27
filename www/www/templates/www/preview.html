@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Game | Clue</title>
+    <link rel="stylesheet" type="text/css" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/6.0.0/normalize.min.css">
+    <style>
+     body {
+         font-family: "serif";
+         font-size: 14pt;
+     }
+     .page {
+         width: 1056px;
+         height: 816px;
+         page-break-after: always;
+         position: relative;
+     }
+     .content {
+         width: 100%;
+         height: 100%;
+         padding: 48px;
+     }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="content">
+        <h1>Clue</h1>
+        <p>How to play ...</p>
+      </div>
+    </div>
+    <div class="page">
+      <div class="content">
+        <h2>Suspects</h2>
+        {% for suspect in game.suspects %}
+          <p>{{ suspect.name }}</p>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="page">
+      <div class="content">
+        <h2>Locations</h2>
+        {% for location in game.locations %}
+          <p>{{ location.name }}</p>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="page">
+      <div class="content">
+        <h2>Weapons</h2>
+        {% for weapon in game.weapons %}
+          <p>{{ weapon.name }}</p>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>

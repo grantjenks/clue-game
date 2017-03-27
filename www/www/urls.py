@@ -26,5 +26,13 @@ admin.site.site_header = 'Clue Game Backend'
 urlpatterns = [
     url('^' + prefix + r'backend/', include(admin.site.urls)),
     url('^' + prefix + r'$', views.index, name='index'),
-    url('^' + prefix + r'(?P<hashid>.*)/$', views.game, name='game'),
+    url('^' + prefix + r'(?P<hashid>[^/]+)/$', views.game, name='game'),
+    url('^' + prefix + r'(?P<hashid>[^/]+)/preview/$',
+        views.preview,
+        name='preview',
+    ),
+    url('^' + prefix + r'(?P<hashid>[^/]+)/download/$',
+        views.download,
+        name='download',
+    ),
 ]
